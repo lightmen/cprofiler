@@ -1,0 +1,28 @@
+scrape-configs:
+  - job: cashcow_lightmen
+    interval: 60s         # the interval for scrape profile data
+    expiration: 168h      # the profile data expire time
+    # enabled-profiles include: profile, mutex, heap, goroutine, allocs, block, threadcreate, trace, all
+    # all : means all sample type except trace
+    # if not
+    enabled-profiles: [all, trace]
+    path-profiles: 
+      profile: /debug/pprof/profile?seconds=10
+      trace: /debug/pprof/trace?seconds=10
+    target-configs:
+      - application: lobbysrv
+        hosts:
+          - 192.168.15.115:8150
+        labels:                
+          env: dev
+      - application: pokersrv
+        hosts:
+          - 192.168.15.115:16012 
+          - 192.168.15.115:16022 
+        labels:              
+          env: dev
+      - application: gatesrv
+        hosts:
+          - 192.168.15.115:11002
+        labels:              
+          env: dev 

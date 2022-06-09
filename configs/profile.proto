@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package forevernine.cashcow.proto;
+
+message Label {
+    string Key   = 1;
+    string Value = 2;
+}
+
+message ProfileMeta {
+    string         ProfileID      = 1;
+    string         ProfileType    = 2;
+    string         SampleType     = 3;
+    string         TargetName     = 4;
+    string         SampleTypeUnit = 5;
+    int64          Value          = 6;
+    int64          Timestamp      = 7;
+    int64          Duration       = 8;
+    repeated Label Labels         = 9;
+}
+
+message ProfileMetaByTarget {
+    string               TargetName   = 1;
+    repeated ProfileMeta ProfileMetas = 2;
+}

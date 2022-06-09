@@ -1,0 +1,5 @@
+package badger
+
+func New() {
+
+}
