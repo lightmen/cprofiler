@@ -2,10 +2,12 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
 	"os/signal"
+	"runtime"
 	"syscall"
 	"time"
 
@@ -24,7 +26,13 @@ var (
 	uiGCInternal   time.Duration
 )
 
+var buildstamp = ""
+var githash = ""
+var goversion = fmt.Sprintf("%s %s/%s", runtime.Version(), runtime.GOOS, runtime.GOARCH)
+
 func main() {
+	version()
+
 	flag.StringVar(&configPath, "config-path", "./conf/cprofiler.yml", "Collector configuration file path")
 	flag.StringVar(&dataPath, "data-path", "./data/cprofiler/badger", "Collector Data file path")
 	flag.DurationVar(&dataGCInternal, "data-gc-internal", 5*time.Minute, "Collector Data gc internal")
@@ -57,6 +65,16 @@ func main() {
 	collectorManger.Stop()
 	apiServer.Stop()
 	store.Release()
+}
+
+func version() {
+	args := os.Args
+	if len(args) == 2 && (args[1] == "--version" || args[1] == "-v") {
+		fmt.Printf("Git Commit Hash: %s\n", githash)
+		fmt.Printf("UTC Build Time : %s\n", buildstamp)
+		fmt.Printf("Golang Version : %s\n", goversion)
+		os.Exit(0)
+	}
 }
 
 // runAPIServer Run apis ,pprof ui ,trace ui

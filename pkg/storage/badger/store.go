@@ -103,26 +103,13 @@ func (s *store) GetProfile(id string) (string, []byte, error) {
 }
 
 func (s *store) SaveProfile(name string, profileData []byte, ttl time.Duration) (string, error) {
-	var compressData bytes.Buffer
-	gzipWriter, _ := gzip.NewWriterLevel(&compressData, gzip.BestCompression)
-	gzipWriter.Header.Name = name
-	defer gzipWriter.Close()
-	_, err := gzipWriter.Write(profileData)
-	if err != nil {
-		return "", err
-	}
-	err = gzipWriter.Flush()
-	if err != nil {
-		return "", err
-	}
-
 	id, err := s.profileSeq.Next()
 	if err != nil {
 		return "", err
 	}
 	idStr := strconv.FormatUint(id, 10)
 	err = s.db.Update(func(txn *badger.Txn) error {
-		return txn.SetEntry(newProfileEntry(idStr, compressData.Bytes(), ttl))
+		return txn.SetEntry(newProfileEntry(idStr, profileData, ttl))
 	})
 
 	return idStr, err
