@@ -1,5 +1,3 @@
-持续分析系统cprofiler使用指南
-
 # 概述
 
 cprofiler是一款根据网上[项目](https://github.com/xyctruth/profiler)改造的持续分析系统，该系统用来抓取和分析go程序的profile数据。
