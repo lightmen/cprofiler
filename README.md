@@ -60,29 +60,13 @@ npm run dev --base_api_url=http://localhost:8080
 
 
 
-前端运行后，前端监听的是80端口，通过 localhost:80 可以访问前端界面，界面示例如下：
-
-![img](https://forever9.feishu.cn/space/api/box/stream/download/asynccode/?code=MGFiNGIwNjJjYjViY2RkYzAwNTE0MmRkNDkzZTRhY2NfSXNlVzJTNUFXbW5mb0o2Rk5odzFqdVRJd0U1aENCR0hfVG9rZW46Ym94Y24xbTRIUzVBakk1M1BScE9FbEs5enJmXzE2NTUyNjE1ODU6MTY1NTI2NTE4NV9WNA)
-
-
-
-
+前端运行后，前端监听的是80端口，通过 localhost:80 可以访问前端界面
 
 最上面一行，可以选择展示的样本、过滤的label 和 时间
 
+中间的是抓取的样本数据的气泡图，点击气泡可以跳转到具体样本的分析详情。
 
 
-中间的是抓取的样本数据的气泡图，点击气泡可以跳转到具体样本的分析详情。比如，点击 profile_cpu中的气泡，跳转到如下界面：
-
-![img](https://forever9.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDRjNmEwZDA2YjBhMGU2N2RlZTI2OThmN2I3MGJlY2FfbmNJbXkxbklGaU5UQnFLMEVsS05vMkJHbXZuNnBTN2xfVG9rZW46Ym94Y250UmduNWx1Tk44N1VlQlRic1VXNWpmXzE2NTUyNjE1ODU6MTY1NTI2NTE4NV9WNA)
-
-
-
-
-
-
-
-![img](https://forever9.feishu.cn/space/api/box/stream/download/asynccode/?code=NjhiMTMyMmFhMDNlZmQ2MzAxMjhiNmM0Zjg2YTJjMDFfR3NoMVJPb1hEeXVZMzh3NDlocE1iQVVpNWJSSGVqTzJfVG9rZW46Ym94Y25IRlZLeHdsT3RJaHp1OFdnWGRkNkpkXzE2NTUyNjE1ODU6MTY1NTI2NTE4NV9WNA)
 
 
 
@@ -211,4 +195,3 @@ http://localhost:8080/api/download/692
 
 http://localhost:8080/api/pprof/ui/692/?si=cpu
 
-![img](https://forever9.feishu.cn/space/api/box/stream/download/asynccode/?code=OWYwODM1YWViOTJhYjAzYjVmZmJkODFjNTM1MGExNjZfclJ5NGR1VlVocE0ySlpKSm9tUlpmQjlZRW5tclJYZ2VfVG9rZW46Ym94Y245SzB2bktocm40Y3M2b2E2azN2S2RiXzE2NTUyNjE1ODU6MTY1NTI2NTE4NV9WNA)
