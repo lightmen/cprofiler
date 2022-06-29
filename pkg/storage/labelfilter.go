@@ -16,7 +16,7 @@ func (f LabelFilter) Policy(slice1, slice2 []string) []string {
 	} else if f.Condition == FilterOR {
 		return Union(slice1, slice2)
 	}
-	return Intersect(slice1, slice2)
+	return Union(slice1, slice2)
 }
 
 //Union 并集
