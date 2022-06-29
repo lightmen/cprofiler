@@ -154,20 +154,14 @@ func (s *APIServer) listProfileMeta(c *gin.Context) {
 		return
 	}
 
-	startTime, err = time.Parse("2006-01-02 15:04:05", c.Query("start_time"))
-	if err != nil {
-		if startTime, err = time.Parse(time.RFC3339, c.Query("start_time")); err != nil {
-			c.String(http.StatusBadRequest, "%s ,%s", "The time format must be RFC3339", err.Error())
-			return
-		}
+	if startTime, err = time.Parse(time.RFC3339, c.Query("start_time")); err != nil {
+		c.String(http.StatusBadRequest, "%s ,%s", "The time format must be RFC3339", err.Error())
+		return
 	}
 
-	endTime, err = time.Parse("2006-01-02 15:04:05", c.Query("end_time"))
-	if err != nil {
-		if endTime, err = time.Parse(time.RFC3339, c.Query("end_time")); err != nil {
-			c.String(http.StatusBadRequest, "%s ,%s", "The time format must be RFC3339", err.Error())
-			return
-		}
+	if endTime, err = time.Parse(time.RFC3339, c.Query("end_time")); err != nil {
+		c.String(http.StatusBadRequest, "%s ,%s", "The time format must be RFC3339", err.Error())
+		return
 	}
 
 	req := struct {

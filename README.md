@@ -100,14 +100,14 @@ npm run dev --base_api_url=http://localhost:8080
 
 ### 参数
 
-- start_time: 开始时间，格式(yyyy-mm-dd hh:mm:ss) ， 必填
-- end_time: 结束时间， 格式(yyyy-mm-dd hh:mm:ss)，必填
+- start_time: 开始时间，格式RFC3339(yyyy-mm-ddThh:mm:ss.000Z) ， 必填
+- end_time: 结束时间， 格式RFC3339，必填
 - lbs: 过滤标签，map类型，选填，label的值从`/api/group_labels` 获取
 - condition：标签条件，选填，值为 AND 或者 OR， 不填为 AND
 
 ### 示例
 
-http://localhost:8080/api/profile_meta/profile_cpu?&start_time=2022-06-07%2016:00:00&end_time=2022-06-09%2018:00:00&lbs[_app]=pokersrv&lbs[_host]=192.168.15.115:16012
+http://192.168.15.115:8080/api/profile_meta/profile_cpu?&start_time=2022-06-28T16:00:00.000Z&end_time=2022-06-29T16:00:00.000Z&lbs[_app]=pokersrv&lbs[_host]=192.168.15.115:16012
 
 ```JSON
 [{"TargetName":"192.168.15.115:16012","ProfileMetas":[{"ProfileID":"31","ProfileType":"profile","SampleType":"profile_cpu","JobName":"cashcow_lightmen","Host":"192.168.15.115:16012","App":"pokersrv","SampleTypeUnit":"nanoseconds","Value":4210000000,"Timestamp":1654770439076,"Duration":10108768696,"Labels":[{"Key":"env","Value":"dev"}]},{"ProfileID":"63","ProfileType":"profile","SampleType":"profile_cpu","JobName":"cashcow_lightmen","Host":"192.168.15.115:16012","App":"pokersrv","SampleTypeUnit":"nanoseconds","Value":3880000000,"Timestamp":1654770509282,"Duration":10148589892,"Labels":[{"Key":"env","Value":"dev"}]}]}]
